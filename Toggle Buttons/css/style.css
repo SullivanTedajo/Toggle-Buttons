@@ -1,0 +1,120 @@
+/* --- ******  PARAMETRAGE DES ELEMENTS GLOBAUX DU SITE  ****** --- */
+*, ::after,::before {
+    box-sizing: border-box;
+}
+*{
+    scroll-behavior: smooth;
+}
+h1,h2,h3,h4,h5,h6,p {
+    margin: 0;
+    padding: 0.4rem;
+}
+html {
+    margin: 0;
+    font-family: 'Lato', 'sans-serif';
+    font-size: 10px;
+    height: 100%;
+}
+body{
+    margin:0;
+    padding: 0;
+    font-size: 1.6rem;
+    line-height: 1.8em;  
+}
+
+:root{
+    --green-background: #F1F9F9;
+    --green-slider: #EBF7FC;
+    --red-slider: #FCEBEB;
+    --toggler-on-color: #03A9F4;
+    --toggler-off-color: #F44336;
+    --white-background: #FFF;
+}
+
+/* --- ******  STYLE INDEX   ****** --- */
+.main-container{
+    width: 100%;
+    padding: 6em 3em;
+    background-color: var(--green-background);
+    display: -ms-inline-grid;
+    display: inline-grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8em;
+}
+.container-toggler{
+    background-color: var(--white-background);
+    padding: 1.5em;
+    border-radius: 0.5em;
+    /* width: 10em; */
+    height: 9em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.container-toggler > span{
+    position: absolute;
+    bottom: .2em;
+    right: .2em;
+    color: var(--green-background);
+}
+.toggler-label{
+    cursor: pointer;
+}
+.toggler-input{
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+.toggler-label_slider{
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    min-width: 6.5em;
+    min-height: 4.4em;
+    padding: .5em 1.6em .5em .02em;
+    background-color: var(--green-slider);
+    border-radius: 1.9em;
+
+}
+.toggler-label_slider::before{
+    font-size: .8em;
+    content: "YES";
+    padding: .8em;
+    color: var(--white-background);
+    background-color: var(--toggler-on-color);
+    clip-path: circle(40%);
+    margin: .1em;
+}
+.toggler-input:checked + .toggler-label_slider{
+background-color: var(--red-slider);
+}
+
+.toggler-label_slider::after{
+    font-size: .8em;
+    content: "NO";
+    padding: .8em;
+    color: var(--white-background);
+    background-color: var(--toggler-off-color);
+    clip-path: circle(40%);
+    margin: .1em;
+    position: absolute;
+    right: .1em;
+}
+
+/* --- ******  SLIDER 1   ****** --- */
+.toggler-label_slider-1.toggler-label_slider::after{
+    transform: translateX(-125%);
+    display: none;
+    
+ }
+.toggler-input:checked + .toggler-label_slider-1.toggler-label_slider::before{
+    transform: translateX(50%);
+    display: none;
+    transition: 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;
+}
+.toggler-input:checked + .toggler-label_slider-1.toggler-label_slider::after{
+    display: inline;
+    transform: translateX(5%);
+    transition: 0.9s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;
+}
